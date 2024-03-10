@@ -85,7 +85,7 @@ parser.add_argument('--eval-iters', type=int, default=100,
                     help='Number of iterations to run for evaluation'
                     'validation/test for.')
 
-# Other
+
 parser.add_argument('--gradient-checkpointing', action='store_true',
                     help='The gradient checkpointing.')
 parser.add_argument('--logging-nan-inf-filter', action='store_true',
