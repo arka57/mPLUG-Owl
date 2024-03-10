@@ -26,8 +26,8 @@ SAVE_NAME=sft_v0.1_ft_grad_ckpt
 SAVE_PATH="./output/${SAVE_NAME}/"
 
 max_length=2048
-micro_batch_size=4
-global_batch_size=256
+micro_batch_size=1 #4
+global_batch_size=1 #256
 gradient_accumulation_steps=1
 
 # train_iters = total_data * train_epochs // global_batch_size
@@ -69,4 +69,4 @@ multimodal_options=" \
 	--mm-config configs/v0.yaml 
     "
 
-python -m torch.distributed.launch $DISTRIBUTED_ARGS ./pipeline/train.py $@ ${options} ${multimodal_options} 2>&1 | tee ${SAVE_PATH}/train.log 
+python ./pipeline/train.py $@ ${options} ${multimodal_options} 2>&1 | tee ${SAVE_PATH}/train.log 

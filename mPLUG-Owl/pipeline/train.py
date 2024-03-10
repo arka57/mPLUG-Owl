@@ -105,10 +105,10 @@ class CustomTrainer(Trainer):
         
     def get_train_dataloader(self) -> DataLoader:
         dataset = self.train_dataset
-        sampler = DistributedSampler(dataset)
+        #sampler = DistributedSampler(dataset)
         return torch.utils.data.DataLoader(
             dataset, batch_size=self._train_batch_size,
-            sampler=sampler,
+            sampler=None,
             num_workers=self.args.dataloader_num_workers,
             drop_last=True,
             pin_memory=True,
@@ -117,10 +117,10 @@ class CustomTrainer(Trainer):
 
     def get_eval_dataloader(self, eval_dataset: Dataset | None = None) -> DataLoader:
         dataset = self.eval_dataset
-        sampler = DistributedSampler(dataset, shuffle=False)
+        #sampler = DistributedSampler(dataset, shuffle=False)
         return torch.utils.data.DataLoader(
             dataset, batch_size=self._train_batch_size,
-            sampler=sampler,
+            sampler=None,
             num_workers=self.args.dataloader_num_workers,
             drop_last=True,
             pin_memory=True,
